@@ -9,3 +9,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+    # pour appliquer le nom exact de notre table, au lieu de la convention Django
+    class Meta :
+        db_table="articles"
