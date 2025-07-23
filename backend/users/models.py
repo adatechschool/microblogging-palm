@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 class User(models.Model):
@@ -7,8 +8,8 @@ class User(models.Model):
     birthdate = models.DateField()
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.user_name
