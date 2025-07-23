@@ -1,0 +1,9 @@
+<form method="POST" action="/article/new/">
+  {% csrf_token %}
+  <input type="text" name="title" required />
+  <textarea name="content" required></textarea>
+  <input type="text" name="user_id" required />
+  <!-- <input type="text" name="created_at" required>
+    <input type="text" name="updated_at" required> -->
+  <input type="submit" value="Submit" />
+</form>
