@@ -14,7 +14,6 @@ def accueil(request):
     return Response(serializer.data)
     #return render(request, 'accueil.html', {'articles': articles})
 
-
 @api_view(['GET'])
 def article_id(request, id):
     articles = get_object_or_404(Article, id = id)
