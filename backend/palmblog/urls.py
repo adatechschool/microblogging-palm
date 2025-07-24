@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from palmblog.views import home
+from articles.views import article_detail_html, accueil_html
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home, name='home'),
+    #path('home/', home, name='home'),
+    path('accueil', accueil_html, name='accueil'),
     path('articles/', include('articles.urls')),  # inclut les routes de l'app articles
     path('users/', include('users.urls')), #peut-être à changer par profils/ ??
 ]
