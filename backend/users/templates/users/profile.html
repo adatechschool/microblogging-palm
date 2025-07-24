@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Profil de {{ user.username }}</h1>
+  <p>Email : {{ user.email }}</p>
+  
+  <h2>Mes articles</h2>
+
+  {% if articles %}
+    <ul>
+      {% for article in articles %}
+        <li>
+          <strong>{{ article.title }}</strong><br>
+          {{ article.content|truncatewords:20 }}<br>
+          <em>Publié le {{ article.created_at|date:"d/m/Y H:i" }}</em>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Tu n’as pas encore publié d’article.</p>
+  {% endif %}
+{% endblock %}

@@ -30,7 +30,7 @@ def test_post_article():
 
 @pytest.mark.django_db
 def test_post_article_missing_fields():
-    # Données avec un champ manquant
+    # Données avec un champ manquant !!
     json_data = {
         "title": "Nouveau post",
         "user_id": 1
