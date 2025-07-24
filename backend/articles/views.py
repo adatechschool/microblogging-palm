@@ -12,7 +12,6 @@ def accueil(request):
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
 
-
 @api_view(['GET'])
 def article_id(request, id):
     articles = get_object_or_404(Article, id = id)
