@@ -9,8 +9,10 @@ from django.shortcuts import get_object_or_404
 @api_view(['GET'])
 def accueil(request):
     articles = Article.objects.all()
-    serializer = ArticleSerializer(articles, many=True)
-    return Response(serializer.data)
+    if request.headers.get('Accept') == 'application/json':
+        serializer = ArticleSerializer(articles, many=True)
+        return Response(serializer.data)
+    return render(request, 'accueil.html', {'articles': articles})
 
 
 @api_view(['GET'])
