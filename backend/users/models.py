@@ -15,16 +15,4 @@ class User(AbstractUser):
 
     # pour appliquer le nom exact de notre table, au lieu de la convention Django
     class Meta :
-        db_table="users"  
-
-    # user_name = models.CharField(max_length=255)
-    # birthdate = models.DateField()
-    # email = models.CharField(max_length=255)
-    # password = models.CharField(max_length=255)
-    # created_at = models.DateField(auto_now_add=True)
-    # updated_at = models.DateField(auto_now=True)
-
-    # def __str__(self):
-    #     return self.user_name
-    
-  
+        db_table="users" 
