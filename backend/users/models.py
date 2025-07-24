@@ -8,8 +8,8 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     # username = None
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    # USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = []
 
     profile_photo = models.ImageField(verbose_name='Photo de profil')
 

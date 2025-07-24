@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from palmblog.views import home
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', home, name='home'),
     path('articles/', include('articles.urls')),  # inclut les routes de l'app articles
     path('users/', include('users.urls')), #peut-être à changer par profils/ ??
 ]

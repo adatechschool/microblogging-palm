@@ -2,9 +2,10 @@ from django.contrib import admin
 from django.urls import path
 
 from users.views.login_page import login_page, logout_user
+from users.views.signup_page import signup_page
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', login_page, name='login'),
     path('logout/', logout_user, name='logout'),
+    path('signup/', signup_page, name='signup'),
 ]
