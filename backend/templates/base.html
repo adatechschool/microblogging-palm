@@ -3,7 +3,12 @@
         <title>PalmBlog</title>
     </head>
     <body>
-        <h1>PalmBlog</h1>
+        <header>
+            <h1>PalmBlog</h1>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">Mon profil</a>
+        {% endif %}
+        </header>
         {% block content %}{% endblock content %}
         {% if user.is_authenticated %}
             <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
