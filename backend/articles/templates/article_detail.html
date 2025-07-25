@@ -52,6 +52,12 @@
       <h2>{{ article.title }}</h2>
       <p>{{ article.content }}</p>
     </div>
+    <div>
+      Publié par 
+        <a href="{% url 'public_profile' article.user.id %}">
+          {{ article.user.username }}
+        </a>
+    </div>
     <div class="return">
       <a href="/accueil">
         <svg
