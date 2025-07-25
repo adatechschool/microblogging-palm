@@ -151,6 +151,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL= '/home'
+LOGIN_REDIRECT_URL= '/accueil'
 
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
