@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('home/', home, name='home'),
     path('accueil', accueil_html, name='accueil'),
-    path('articles/', include('articles.urls')),  # inclut les routes de l'app articles
+    path('', include('articles.urls')),  # inclut les routes de l'app articles
     path('users/', include('users.urls')), #peut-être à changer par profils/ ??
 ]
