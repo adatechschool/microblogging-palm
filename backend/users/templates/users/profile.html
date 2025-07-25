@@ -19,4 +19,7 @@
   {% else %}
     <p>Tu n’as pas encore publié d’article.</p>
   {% endif %}
+  <a href="{% url 'edit_profile' %}">✏️ Modifier mon profil</a>
+  <br>
+  <a href="{% url 'delete_profile' %}">🗑️ Supprimer mon profil</a>
 {% endblock %}
