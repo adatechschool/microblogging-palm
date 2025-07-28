@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import json
+from django.shortcuts import get_object_or_404
 
 
 
@@ -62,6 +63,41 @@ def article_new_html(request):
         return redirect('accueil')  # redirection propre après création
     else:
         return render(request, 'newpost.html')
+
+@login_required
+def delete_post(request, article_id):
+    article = get_object_or_404(Article, id = article_id)
+    if request.method == 'POST':
+        
+        if article.user == request.user :
+            article.delete()
+        return redirect('profile')
+    return render(request, 'delete_post.html', {'article': article})
+
+@login_required
+def edit_post(request, article_id):
+    article = get_object_or_404(Article, id = article_id)
+
+    if article.user != request.user:
+        return redirect('profile')
+    
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+
+        if not all([title, content]):
+            error = "Tous les champs sont requis."
+            return render(request, 'edit_post.html', {'article': article, 'error': error})
+
+        article.title = title
+        article.content = content
+        article.save()
+        return redirect('profile')
+    
+    return render(request, 'edit_post.html', {'article': article})
+
+
+
 
 #@api_view(['POST'])
 #def article_new(request):
