@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Modifier mon article</h2>
+  {% if error %}
+    <p style="color: red">{{ error }}</p>
+  {% endif %}  
+  <form method="post" class="formContainer">
+    {% csrf_token %}
+    
+    <div class="formTitle">
+        <label for="title">Titre :</label>
+        <input type="text" id="title" name="title" value="{{ article.title}}" required />
+    </div>
+
+    <div class="formContenu">
+        <label for="content">Contenu :</label>
+        <textarea id="content" name="content" rows="5" cols="40" required>{{ article.content}}</textarea>
+    </div>
+    <button type="submit">Enregistrer les modifications</button>
+    <a href="{% url 'profile' %}">Annuler</a>
+  </form>
+{% endblock %}
