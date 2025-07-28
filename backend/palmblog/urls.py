@@ -5,6 +5,7 @@ from palmblog.views import home
 from users.views.login_page import login_page, logout_user
 from users.views.signup_page import signup_page
 from users.views import profile_page, edit_profile, delete_profile, public_profile
+from articles.views import article_detail_html, accueil_html
 
 urlpatterns = [
     path('admin/', admin.site.urls),
