@@ -1,17 +1,84 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/css/accueil.css" />
         <title>PalmBlog</title>
+        {% load static %}
     </head>
     <body>
         <header>
-            <h1>PalmBlog</h1>
-            {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}">Mon profil</a>
-        {% endif %}
+            <a href="/accueil">
+                <h1>PalmBlog</h1>
+            </a>
+           <div class="postprofil">
+                <div class="newpost">
+                    <a href="{% url 'article_new_html' %}">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-6"
+                            >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                        </svg>
+                    </a>
+
+                    <p>Post</p>
+                </div>
+                <div class="profil">
+                    <a href="{% url 'profile' %}">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6"
+                        >   
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                        />
+                    </svg>
+                    <p>Profil</p>
+                    </a>
+                </div>
+            </div>
         </header>
-        {% block content %}{% endblock content %}
-        {% if user.is_authenticated %}
-            <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
-        {% endif %}
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+        <footer>
+            <div class="return">
+                <a href="/accueil">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                    >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z"
+                    />
+                    </svg>
+                </a>
+            </div>
+            {% if user.is_authenticated %}
+                <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
+            {% endif %}
+        </footer>
     </body>
 </html>
