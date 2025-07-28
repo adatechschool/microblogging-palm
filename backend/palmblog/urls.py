@@ -11,7 +11,7 @@ urlpatterns = [
     path('', login_page, name='login'),
     path('inscription/', signup_page, name='signup'),
     path('accueil/', home, name='home'),
-    path('article/', include('articles.urls')),  # inclut les routes de l'app articles
+    path('', include('articles.urls')),  # inclut les routes de l'app articles
     path('users/', include('users.urls')), #peut-être à supprimer ?
     path('monprofil/', profile_page.profile_view, name='profile'),
     path('monprofil/modifier/', edit_profile.edit_profile_view, name='edit_profile'),
