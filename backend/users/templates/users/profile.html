@@ -51,6 +51,9 @@
             {{ article.content|truncatewords:20 }}
           </li>
           </a>
+          <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
+          <a href="{% url 'delete_post' article.id %}">🗑️ Supprimer mon article</a>
+          <a href="{% url 'edit_post' article.id %}">✏️ Modifier mon article</a>
           
         {% endfor %}
       </ul>

@@ -4,7 +4,7 @@
   {% for article in articles %}
   <section class="article">
     <div class="info">
-      <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="">{{ article.user.username }} </a></p>
+      <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="{% url 'public_profile' article.user.id %}">{{ article.user.username }} </a></p>
     </div>
     <div class="titreArticle">
       <h2>{{ article.title }}</h2>

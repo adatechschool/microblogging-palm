@@ -11,10 +11,12 @@
           <strong>{{ article.title }}</strong><br>
           {{ article.content|truncatewords:20 }}<br>
           <em>Publié le {{ article.created_at|date:"d/m/Y H:i" }}</em>
+          <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
         </li>
       {% endfor %}
     </ul>
   {% else %}
     <p>Aucun article pour le moment.</p>
   {% endif %}
+
 {% endblock %}
