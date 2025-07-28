@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Article
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 
 @api_view(['POST'])
@@ -46,4 +46,22 @@ def article_new(request):
                 {'error': str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
-    return render(request, 'newpost.html')
+
+def article_new_html(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        user_id = request.POST.get('user_id')
+
+        if not all(title, content, user_id):
+            error ='Tous les champs sont requis.'
+            return render(request, 'newpost.html', {'error': error})
+        
+        article = Article(title=title, content=content, user_id=user_id)
+        article.save()
+        return render(request, 'accueil')
+    else:
+        return render(request, 'newpost.html')
+
+def test_view(request):
+    return render(request, 'test.html')

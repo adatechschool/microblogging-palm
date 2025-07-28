@@ -48,6 +48,14 @@
   height: 29px;
 }
 
+a {
+  color: black;
+}
+
+a svg:visited {
+  color: black;
+}
+
 .profil svg {
   height: 30px;
 }
@@ -81,6 +89,64 @@ a {
   margin-left: auto;
 }
 
-.return svg{
+.return svg {
   height: 30px;
+}
+.return svg:visited {
+  color: black;
+}
+
+/* Style Formulaire */
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.formTitle {
+  width: 100px;
+}
+
+.formTitle input {
+  height: 25px;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.formContenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContenu textarea {
+  margin-right: 30px;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.formButton {
+  width: 60px;
+  height: 20px;
+  border-radius: 8px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/* .formReturn {
+} */
+
+.formReturn svg {
+  height: 30px;
+  margin-left: 30px;
+  margin-top: 10px;
+  color: black;
+}
+
+.formReturn svg:visited {
+  color: black;
 }
