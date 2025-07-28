@@ -9,10 +9,10 @@ def delete_profile(request, user_id):
         user = get_object_or_404(User, id=user_id)
         
         if request.user != user:
-            return Response(
-            {"error": "Vous n'avez pas la permission de supprimer ce profil."},
-            status=status.HTTP_403_FORBIDDEN
-        )
+             return Response(
+             {"error": "Vous n'avez pas la permission de supprimer ce profil."},
+             status=status.HTTP_403_FORBIDDEN
+         )
         
         user.delete()
 
