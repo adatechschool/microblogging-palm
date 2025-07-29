@@ -11,7 +11,7 @@ def test_edit_profil():
     data = {
         'username': 'testuser',
         'email': 'test@example.com',
-        'profile_photo': ''
+        # 'profile_photo': ''
     }
     response = client.post(url, data=data)
 
