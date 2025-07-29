@@ -51,6 +51,7 @@
               <p>{{ article.content|truncatewords:20 }}</p>
             </div>
             <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
+            <p>{{ article.liked_by.count }} j’aime</p>
           </li>
           </a>
           <!-- <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a> -->
