@@ -11,6 +11,7 @@
           <strong>{{ article.title }}</strong><br>
           {{ article.content|truncatewords:20 }}<br>
           <em>Publié le {{ article.created_at|date:"d/m/Y H:i" }}</em>
+          <p>{{ article.liked_by.count }} j’aime</p>
           <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
         </li>
       {% endfor %}

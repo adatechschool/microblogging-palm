@@ -62,6 +62,7 @@
       <div class="titreArticle">
         <h2>{{ article.title }}</h2>
         <p>{{ article.content|truncatewords:80 }}</p>
+        <p>{{ article.liked_by.count }} j’aime</p>
       </div>
       <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
     </section>

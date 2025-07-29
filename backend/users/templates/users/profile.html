@@ -13,6 +13,7 @@
           <strong>{{ article.title }}</strong><br>
           {{ article.content|truncatewords:20 }}<br>
           <em>Publié le {{ article.created_at|date:"d/m/Y H:i" }}</em>
+          <p>{{ article.liked_by.count }} j’aime</p>
           <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
           <a href="{% url 'delete_post' article.id %}">🗑️ Supprimer mon article</a>
           <a href="{% url 'edit_post' article.id %}">✏️ Modifier mon article</a>

@@ -62,6 +62,16 @@
         <a href="{% url 'public_profile' article.user.id %}">
           {{ article.user.username }}
         </a>
+        <p>{{ article.liked_by.count }} j’aime</p>
+        <!-- Bouton Like/Unlike -->
+        <form method="POST" action="{% url 'like' article.id %}">
+          {% csrf_token %}
+          {% if user in article.liked_by.all %}
+            <button type="submit">❤️ Unlike</button>
+          {% else %}
+            <button type="submit">🤍 Like</button>
+          {% endif %}
+        </form>
     </div>
     <div class="return">
       <a href="/accueil">
