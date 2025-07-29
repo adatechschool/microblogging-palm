@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Modifier mon profil</h2>
-  <form method="post" enctype="multipart/form-data">
+  <section class="sectionProfil">
+    <h2>Modifier mon profil</h2>
+  </section>
+
+  <form method="post" enctype="multipart/form-data" class="formProfile">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Enregistrer les modifications</button>
+    <button type="submit" class="plainButtonMax">Enregistrer les modifications</button>
   </form>
 {% endblock %}
