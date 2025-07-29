@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Se connecter</button>
-    </form>
-    <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
+    <section class="sectionProfil">
+
+        {% if message %}
+            <p class="errorMessage">{{ message }}</p>
+        {% endif %}
+
+        <form method="post" class="formContainer">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="plainButtonBase" >Se connecter</button>
+        </form>
+    </section>
+
+    <p style="display: flex; justify-content: space-between; align-items: center;">
+        Pas encore membre ? <a href="{% url 'signup' %}" class="outlineButtonBase" style="--btn-width: 300px;">Inscrivez-vous maintenant !</a></p>
 {% endblock content %}

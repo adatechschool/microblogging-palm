@@ -1,22 +1,54 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <h2>Profil de {{ profile_user.username }}</h2>
+  <section class="bandeauProfil">
 
-  <h3>Articles publiés :</h3>
-  {% if articles %}
-    <ul>
-      {% for article in articles %}
-        <li>
-          <strong>{{ article.title }}</strong><br>
-          {{ article.content|truncatewords:20 }}<br>
-          <em>Publié le {{ article.created_at|date:"d/m/Y H:i" }}</em>
-          <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Aucun article pour le moment.</p>
-  {% endif %}
+    <div class="profilInfos">
+      <h3>Profil</h3>
+      <h1>{{ profile_user.username }}</h1>
+      <br>
+      <!-- <p><strong>Email</strong> {{ user.email }}</p>
+      {% if user.first_name %} -->
+      <p><strong>Prénom</strong> {{ profile_user.first_name }}</p>
+      {% endif %}
+      {% if profile_user.first_name %}
+      <p><strong>Nom</strong> {{ profile_user.last_name }}</p>
+      {% endif %}
+    </div>
+
+    <div class="profilPhoto">
+      {% if profile_user.profile_photo %}
+        <!-- <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150"> -->
+        <img class="profilePicture" src="{{ profile_user.profile_photo.url }}" alt="Photo de profil de {{ profile_user.username }}" width="150" height="150">
+      {% else %}
+        <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150">
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="sectionProfil">
+    <h2>Post{{ articles|length|pluralize:"s" }} <br> {{ articles|length }}</h2>
+  </section>
+
+  <section class="sectionProfil">
+    <h2>Articles publiés</h2>
+    {% if articles %}
+      <ul class="listArticles">
+        {% for article in articles %}
+          <li class="article">
+            <p class="info">{{ article.created_at|date:"d/m/Y - H:i" }}<br></p>
+            <div class="titreArticle">
+              <h3>{{ article.title }}</h3>
+              <p>{{ article.content|truncatewords:20 }}</p>
+            </div>
+            <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Aucun article pour le moment.</p>
+    {% endif %}
+  </section>
 
 {% endblock %}

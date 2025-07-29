@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <section class="sectionProfil">
+    <h2>Nouveau post</h2>
+  </section> 
+
   <form method="POST" class="formContainer">
     {% csrf_token %}
-    <div class="formTitle">
+    <div class="formContenu">
       <label for="title">Titre :</label>
       <input type="text" id="title" name="title" required />
     </div>
@@ -17,9 +21,11 @@
         required
       ></textarea>
     </div>
-    <button class="formButton" type="submit">Publier</button>
+
+    <button type="submit" class="plainButtonBase">Publier</button>
+    <a href="{% url 'accueil' %}" class="outlineButtonBase">Annuler</a>
   </form>
-  <div class="formReturn">
+  <!-- <div class="formReturn">
     <a href="/accueil">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,5 +42,5 @@
         />
       </svg>
     </a>
-  </div>
+  </div> -->
 {% endblock %}
