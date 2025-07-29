@@ -21,7 +21,7 @@ def article_id(request, id):
     return Response(serializer.data)
 
 def accueil_html(request):
-    articles=Article.objects.all()
+    articles=Article.objects.all() #.order_by('-created_at') #pour trier les articles du plus récent au plus vieux grace au '-' devant la valeur
     article_ids=[article.id for article in articles]
     request.session["articles_affiches"]=article_ids
     return render(request, 'accueil.html', {'articles': articles})
