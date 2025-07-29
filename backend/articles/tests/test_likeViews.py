@@ -66,3 +66,4 @@ def test_redirect_after_like(client, article, lecteur):
     
     assert response.status_code == 302
     assert response.url == reverse('article_detail_html', args=[article.id])
+

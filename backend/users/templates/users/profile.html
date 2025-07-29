@@ -2,23 +2,60 @@
 {% load static %}
 
 {% block content %}
-  <h1>Profil de {{ user.username }}</h1>
-  <p>Email : {{ user.email }}</p>
-  
-  <h2>Mes articles</h2>
 
-  {% if articles %}
-    <ul>
-      {% for article in articles %}
-        <li>
-          <strong>{{ article.title }}</strong><br>
-          {{ article.content|truncatewords:20 }}<br>
-          <em>Publié le {{ article.created_at|date:"d/m/Y H:i" }}</em>
+  <section class="bandeauProfil">
+
+    <div class="profilInfos">
+      <h3>Profil</h3>
+      <h1>{{ user.username }}</h1>
+      <br>
+      <p><strong>Email</strong> {{ user.email }}</p>
+      {% if user.first_name %}
+      <p><strong>Prénom</strong> {{ user.first_name }}</p>
+      {% endif %}
+      {% if user.first_name %}
+      <p><strong>Nom</strong> {{ user.last_name }}</p>
+      {% endif %}
+    </div>
+
+    <div class="profilPhoto">
+      {% if user.avatar_choice %}
+  <img class="profilePicture" src="{% static 'images/avatars/'|add:user.avatar_choice %}" alt="Avatar de {{ user.username }}" width="150" height="150">
+{% else %}
+  <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150">
+{% endif %}
+    </div>
+  </section>
+
+    <section class="sectionProfil">
+    <h2>Post{{ articles|length|pluralize:"s" }} <br> {{ articles|length }}</h2>
+  </section>
+
+  <section class="bandeauModifProfil">
+    <div class="buttonGroup">
+      <a href="{% url 'edit_profile' %}" class="plainButton">Modifier mon profil</a>
+      <a href="{% url 'delete_profile' %}" class="plainButton">Supprimer mon profil</a>
+    </div>
+  </section>
+
+    <section class="sectionProfil">
+    <h2>Mes articles</h2>
+    {% if articles %}
+      <ul class="listArticles">
+        {% for article in articles %}
+          <a href="{% url 'article_detail_html' article.id %}">
+            <li>
+            {{ article.created_at|date:"d/m/Y - H:i" }}<br>
+            <strong>{{ article.title }}</strong><br>
+            {{ article.content|truncatewords:20 }}
+          </li>
+          </a>
+
           <p>{{ article.liked_by.count }} j’aime</p>
           <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
           <a href="{% url 'delete_post' article.id %}">🗑️ Supprimer mon article</a>
           <a href="{% url 'edit_post' article.id %}">✏️ Modifier mon article</a>
-          
+
         {% endfor %}
       </ul>
     {% else %}
@@ -26,3 +63,4 @@
     {% endif %}
   </section>
 {% endblock %}
+
