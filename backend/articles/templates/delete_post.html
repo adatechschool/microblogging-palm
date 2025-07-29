@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Supprimer mon article</h2>
+  <p>Es-tu sûr de vouloir supprimer cet article ? Cette action est irréversible.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Oui, supprimer mon article</button>
+    <a href="{% url 'profile' %}">Annuler</a>
+  </form>
+{% endblock %}
