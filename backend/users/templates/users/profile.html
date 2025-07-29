@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
   <h1>Profil de {{ user.username }}</h1>
@@ -17,13 +18,11 @@
           <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
           <a href="{% url 'delete_post' article.id %}">🗑️ Supprimer mon article</a>
           <a href="{% url 'edit_post' article.id %}">✏️ Modifier mon article</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Tu n’as pas encore publié d’article.</p>
-  {% endif %}
-  <a href="{% url 'edit_profile' %}">✏️ Modifier mon profil</a>
-  <br>
-  <a href="{% url 'delete_profile' %}">🗑️ Supprimer mon profil</a>
+          
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Tu n’as pas encore publié d’article.</p>
+    {% endif %}
+  </section>
 {% endblock %}

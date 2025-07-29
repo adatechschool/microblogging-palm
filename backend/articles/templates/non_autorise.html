@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="static/css/accueil.css" />
+{% extends "base.html" %}
 
-  <title>accès refusé</title>
-</head>
-  <a href="/accueil">
-    <h1>Palmblog</h1>
-  </a>
-<body>
+{% block content %}
   <h1>Accès refusé</h1>
   <p>Vous ne pouvez consulter cet article qu'après l'avoir vu sur la page d'accueil.</p>
-</body>
-</html>
+{% endblock content %}
