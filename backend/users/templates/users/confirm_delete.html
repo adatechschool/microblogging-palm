@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Supprimer mon profil</h2>
-  <p>Es-tu sûr de vouloir supprimer ton compte ? Cette action est irréversible.</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Oui, supprimer mon compte</button>
-    <a href="{% url 'profile' %}">Annuler</a>
-  </form>
+  <section class="sectionProfil">
+    <h2>Supprimer mon profil</h2>
+  </section>
+  
+  <section class="sectionProfil">
+    <p>Es-tu sûr de vouloir supprimer ton compte ? <br>
+      <strong>Cette action est irréversible.</strong>
+    </p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="plainButtonMax">Oui, supprimer mon compte</button>
+      <a href="{% url 'profile' %}">Annuler</a>
+    </form>
+  </section>
 {% endblock %}

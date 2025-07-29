@@ -10,6 +10,25 @@
   /* font-family: "Roboto", sans-serif; */
   --font-family-header: "Manrope", sans-serif;
   --font-family-main:"Roboto", sans-serif;
+  --plainButton {
+    display: inline-flex;  
+    align-items: center;
+    justify-content: center ;
+
+    height: 35px;
+    padding: 0px;
+    border-radius: 8px;
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-size: small;
+    overflow: hidden;                  
+    white-space: nowrap;
+  }
 }
 
 body {
@@ -211,6 +230,72 @@ a {
 }
 
 .plainButton {
+    display: inline-flex;  
+    align-items: center;
+    justify-content: center ;
+
+    width: 150px;
+    height: 35px;
+    padding: 0px;
+    border-radius: 8px;
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-size: small;
+    overflow: hidden;                  
+    white-space: nowrap;
+}
+
+.plainButtonMax {
+  display: inline-flex;  
+    align-items: center;
+    justify-content: center ;
+
+    width: 300px;
+    height: 35px;
+    padding: 0px;
+    border-radius: 8px;
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-size: small;
+    overflow: hidden;                  
+    white-space: nowrap;
+}
+
+/* Style Formulaire modifier le profil */
+
+.formProfile p {
+  margin-bottom: 10px;
+}
+
+.formProfile input, .formProfile select, .formProfile textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formProfile label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 7px;
+}
+
+.helptext {
+  font-style: italic;
+  font-size: small;
+}
+/* 
+#id_profile_photo {
   display: inline-flex;  
   align-items: center;
   justify-content: center ;
@@ -229,7 +314,7 @@ a {
   font-size: small;
   overflow: hidden;                  
   white-space: nowrap;
-}
+} */
 
 /* .formReturn {
 } */

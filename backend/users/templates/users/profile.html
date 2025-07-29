@@ -20,8 +20,8 @@
 
     <div class="profilPhoto">
       {% if user.profile_photo %}
-        <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150">
-        <!-- <img class="profilePicture" src="{{ user.profile_photo.url }}" alt="Photo de profil de {{ user.username }}" width="150" height="150"> -->
+        <!-- <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150"> -->
+        <img class="profilePicture" src="{{ user.profile_photo.url }}" alt="Photo de profil de {{ user.username }}" width="150" height="150">
       {% else %}
         <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150">
       {% endif %}
