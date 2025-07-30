@@ -1,68 +1,76 @@
 import pytest
 from django.urls import reverse
-from rest_framework.test import APIClient
+from django.test import Client
 from articles.models import Article
+from users.models import User
 
 @pytest.mark.django_db
 def test_post_article():
-    # article = Article.objects.create(title="Mon premier post", content="Hello world!", user_id=2)
-    json_data = {
-          "title": "Nouveau post",
-          "content": "Léo est très très content",
-          "user_id": 1
+    user = User.objects.create_user(
+        username="newuser",
+        email="newuser@gmail.com",
+        password="TestPass123!"
+    )
+
+    client = Client()
+    client.force_login(user)
+
+    url = reverse('article_new_html')
+
+    data = {
+    'title': 'mon titre',
+    'content': 'mon contenu'
     }
 
-    client = APIClient()
-    url = reverse('article_new')
-    response = client.post(url, data=json_data, format='json')
+    response = client.post(url, data=data, follow=False)
 
-    assert response.status_code == 201
-
-    response_data = response.json()
-    assert 'message' in response_data
-    assert response_data['message'] == 'Article créé avec succès'
-    assert 'id' in response_data
-
-    article = Article.objects.get(id=response_data['id'])
-    assert article.title == json_data['title']
-    assert article.content == json_data['content']
-    assert article.user_id == json_data['user_id']
+    assert response.status_code == 302
+    assert response.url == reverse('accueil')
 
 @pytest.mark.django_db
 def test_post_article_missing_fields():
     # Données avec un champ manquant !!
-    json_data = {
-        "title": "Nouveau post",
-        "user_id": 1
-        # 'content' est manquant
+    user = User.objects.create_user(
+        username="newuser",
+        email="newuser@gmail.com",
+        password="TestPass123!"
+    )
+
+    data = {
+    'title': 'mon titre',
+    # 'content': 'mon contenu' champs manquant
     }
 
-    client = APIClient()
-    url = reverse('article_new')
+    client = Client()
+    client.force_login(user)
+
+    url = reverse('article_new_html')
 
     # Envoyer une requête POST avec JSON
-    response = client.post(url, data=json_data, format='json')
+    response = client.post(url, data="invalid json", content_type='application/json')
 
-    # Vérifier que la requête échoue avec un code 400
-    assert response.status_code == 400
+    assert response.status_code == 200  # La vue rend newpost.html
+    assert 'error' in response.context
+    assert response.context['error'] == 'Tous les champs sont requis.'
+    assert not Article.objects.filter(title='mon titre').exists()
 
-    # Vérifier le message d'erreur
-    response_data = response.json()
-    assert 'error' in response_data
-    assert response_data['error'] == 'Tous les champs (title, content, user_id) sont requis'
+
 
 @pytest.mark.django_db
 def test_post_article_invalid_json():
-    client = APIClient()
-    url = reverse('article_new')
+    user = User.objects.create_user(
+        username="newuser",
+        email="newuser@gmail.com",
+        password="TestPass123!"
+    )
+    
+    client = Client()
+    client.force_login(user)
+    url = reverse('article_new_html')
 
-    # Envoyer une requête POST avec JSON invalide
     response = client.post(url, data="invalid json", content_type='application/json')
 
-    # Vérifier que la requête échoue avec un code 400
-    assert response.status_code == 400
-
-    # Vérifier le message d'erreur
-    response_data = response.json()
-    assert 'error' in response_data
-    assert response_data['error'] == 'JSON invalide'
+    assert response.status_code == 200
+    assert 'error' in response.context
+    assert response.context['error'] == 'Tous les champs sont requis.'
+    assert not Article.objects.filter(title='mon titre').exists()
