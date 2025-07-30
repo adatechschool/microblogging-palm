@@ -6,7 +6,7 @@
     <h2>Modifier mon profil</h2>
   </section>
 
-<form method="post" enctype="multipart/form-data" class="formProfile">
+<form method="post" enctype="multipart/form-data" class="formContainer">
   {% csrf_token %}
 
   {{ form.username.label_tag }} {{ form.username }}
@@ -17,16 +17,19 @@
   <p><strong>{{ form.avatar_choice.label }}</strong></p>
   <div class="avatar-radio">
     {% for radio in form.avatar_choice %}
-  <label>
-    {{ radio.tag }}
-    {% with 'images/avatars/'|add:radio.data.value as avatar_path %}
-      <img src="{% static avatar_path %}" alt="avatar" width="80" height="80">
-    {% endwith %}
-  </label>
-{% endfor %}
+      <label>
+        {{ radio.tag }}
+        {% with 'images/avatars/'|add:radio.data.value as avatar_path %}
+          <img src="{% static avatar_path %}" alt="avatar" width="80" height="80">
+        {% endwith %}
+      </label>
+    {% endfor %}
   </div>
 
-  <button type="submit" class="plainButtonMax">Enregistrer les modifications</button>
+  <div class="buttonGroup">
+    <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Enregistrer les modifications</button>
+    <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+  </div>
 </form>
 
 {% endblock %}

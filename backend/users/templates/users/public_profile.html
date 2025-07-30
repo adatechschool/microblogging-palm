@@ -37,13 +37,15 @@
       <ul class="listArticles">
         {% for article in articles %}
           <li class="article">
-            <p class="info">{{ article.created_at|date:"d/m/Y - H:i" }}<br></p>
+            <p class="info">{{ article.created_at|date:"d/m/Y - H:i" }}</p>
             <div class="titreArticle">
               <h3>{{ article.title }}</h3>
               <p>{{ article.content|truncatewords:20 }}</p>
             </div>
-            <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
-            <p>{{ article.liked_by.count }} j’aime</p>
+            <div class="footerArticle">
+              <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
+              <p class="likes">{{ article.liked_by.count }} j’aime</p>
+            </div>
           </li>
         {% endfor %}
       </ul>
