@@ -21,12 +21,12 @@ def test_get_posts_returns_list():
 
     client = Client()
     client.force_login(user)
-    url = reverse('accueil')  # Utilise accueil_html
+    url = reverse('accueil')
     response = client.get(url, follow=False)
 
     assert response.status_code == 200
-    assert 'articles' in response.context
-    articles = response.context['articles']
+    assert 'page_obj' in response.context
+    articles = response.context['page_obj']
     assert len(articles) == 1
     assert articles[0].title == "Mon premier post"
     assert articles[0].content == "Hello world!"
