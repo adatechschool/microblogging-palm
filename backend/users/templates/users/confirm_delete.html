@@ -9,10 +9,13 @@
     <p>Es-tu sûr de vouloir supprimer ton compte ? <br>
       <strong>Cette action est irréversible.</strong>
     </p>
+    </section>
+
+    <section class="sectionProfil">
     <form method="post">
       {% csrf_token %}
-      <button type="submit" class="plainButtonMax">Oui, supprimer mon compte</button>
-      <a href="{% url 'profile' %}">Annuler</a>
+      <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Oui, supprimer mon compte</button>
+      <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
     </form>
   </section>
 {% endblock %}

@@ -8,10 +8,10 @@
     </div>
     <div class="titreArticle">
       <h2>{{ article.title }}</h2>
-      <p>{{ article.content|truncatewords:80 }}</p>
+      <p>{{ article.content|truncatewords:20 }}</p>
     </div>
     <p>{{ article.liked_by.count }} j’aime</p>
-    <a href="{% url 'article_detail_html' article.id %}">Lire la suite</a>
+    <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
   </section>
   {% endfor %}
 {% endblock %}
