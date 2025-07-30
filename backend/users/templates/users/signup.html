@@ -9,8 +9,10 @@
     <form method="post" class="formContainer">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" class="plainButtonBase">S’inscrire</button>
-        <a href="{% url 'login' %}" class="outlineButtonBase">Annuler</a>
+        <div class="buttonGroup">
+            <button type="submit" class="plainButtonBase">S’inscrire</button>
+            <a href="{% url 'login' %}" class="outlineButtonBase">Annuler</a>
+        </div>
     </form>
 {% endblock content %}
 

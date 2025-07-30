@@ -14,8 +14,10 @@
   <section class="sectionProfil">
     <form method="post">
       {% csrf_token %}
-      <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Oui, supprimer mon article</button>
-      <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+      <div class="buttonGroup">
+        <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Oui, supprimer mon article</button>
+        <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+      </div>
     </form>
   </section>
 {% endblock %}

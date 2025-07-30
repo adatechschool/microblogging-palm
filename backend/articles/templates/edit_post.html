@@ -20,7 +20,9 @@
         <label for="content">Contenu :</label>
         <textarea id="content" name="content" rows="5" cols="40" required>{{ article.content}}</textarea>
     </div>
-    <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Enregistrer les modifications</button>
-    <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+    <div class="buttonGroup">
+      <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Enregistrer les modifications</button>
+      <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+    </div>
   </form>
 {% endblock %}
