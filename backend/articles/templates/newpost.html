@@ -1,9 +1,47 @@
-<form method="POST" action="/article/new/">
-  {% csrf_token %}
-  <input type="text" name="title" required />
-  <textarea name="content" required></textarea>
-  <input type="text" name="user_id" required />
-  <!-- <input type="text" name="created_at" required>
-    <input type="text" name="updated_at" required> -->
-  <input type="submit" value="Submit" />
-</form>
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="sectionProfil">
+    <h2>Nouveau post</h2>
+  </section> 
+
+  <form method="POST" class="formContainer">
+    {% csrf_token %}
+    <div class="formContenu">
+      <label for="title">Titre :</label>
+      <input type="text" id="title" name="title" required />
+    </div>
+    <div class="formContenu">
+      <label for="content">Contenu :</label>
+      <textarea
+        id="content"
+        name="content"
+        rows="5"
+        cols="40"
+        required
+      ></textarea>
+    </div>
+    <div class="buttonGroup">
+      <button type="submit" class="plainButtonBase">Publier</button>
+      <a href="{% url 'accueil' %}" class="outlineButtonBase">Annuler</a>
+    </div>
+  </form>
+  <!-- <div class="formReturn">
+    <a href="/accueil">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z"
+        />
+      </svg>
+    </a>
+  </div> -->
+{% endblock %}

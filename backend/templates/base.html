@@ -1,17 +1,86 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
-        <title>PalmBlog</title>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <title>Palmblog</title>
     </head>
     <body>
         <header>
-            <h1>PalmBlog</h1>
-            {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}">Mon profil</a>
-        {% endif %}
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'accueil' %}">
+                    <h1>Palmblog</h1>
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}">
+                    <h1>Palmblog</h1>
+                </a>
+            {% endif %}
+           <div class="postProfilDiv">
+                <div>
+                    <a href="{% url 'article_new_html' %}" class="postProfilButtons">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            stroke-width="3"
+                            stroke="currentColor"
+                            class="size-6"
+                            >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                        </svg>
+                        <p>Post</p>
+                    </a>
+                    
+                </div>
+                <div>
+                    <a href="{% url 'profile' %}" class="postProfilButtons">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            class="size-6"
+                            >   
+                            <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                            />
+                        </svg>
+                        <p>Profil</p>
+                    </a>
+                    
+                </div>
+            </div>
         </header>
-        {% block content %}{% endblock content %}
-        {% if user.is_authenticated %}
-            <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
-        {% endif %}
+        <main>
+            <div class="main-content">
+            {% block content %}{% endblock content %}
+            </div>
+        </main>
+        <footer class="site-footer">
+            {% if user.is_authenticated %}
+            <div class="logout-footer">
+                <p>Vous êtes connecté en tant que {{ request.user }}. </p>
+                <span><a href="{% url 'logout' %}" class="linkButton">Se déconnecter</a></span>
+            </div>
+            {% endif %}
+            <div class="footer-content">
+                <div class="footer-left">
+                <p>© 2025 Palmblog par Pamela, Auriane, Léo et Michel. Tous droits réservés.</p>
+                <!-- <p><a href="/mentions-legales">Mentions légales</a> | <a href="/contact">Contact</a></p> -->
+                </div>
+            
+                <div class="footer-right">
+                <a href="https://github.com/adatechschool/microblogging-palm.git" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

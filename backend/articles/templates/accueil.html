@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for article in page_obj %}
+  <section class="article">
+    <div class="info">
+      <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="{% url 'public_profile' article.user.id %}" class="linkButton">{{ article.user.username }} </a></p>
+      <!-- <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="{% url 'public_profile' article.user.id %}" style="color: var(color-accent);">{{ article.user.username }} </a></p> -->
+    </div>
+    <div class="titreArticle">
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.content|truncatewords:20 }}</p>
+    </div>
+    <div class="footerArticle">
+      <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
+      <p class="likes">{{ article.liked_by.count }} j’aime</p>
+    </div>
+  </section>
+  {% endfor %}
+  <!--Pagination-->
+  <div class="pagination" style="text-align:center; margin-top: 2rem;">
+    {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; Première</a>
+      <a href="?page={{ page_obj.previous_page_number }}">Précédente</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Dernière &raquo;</a>
+    {% endif %}
+  </div>
+  
+{% endblock %}
+

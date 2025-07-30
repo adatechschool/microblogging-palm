@@ -1,0 +1,13 @@
+
+backend/articles/__pycache__/models.cpython-313.pyc
+backend/articles/__pycache__/postViews.cpython-313.pyc
+backend/articles/__pycache__/urls.cpython-313.pyc
+backend/articles/__pycache__/views.cpython-313.pyc
+backend/articles/migrations/__pycache__/0001_initial.cpython-313.pyc
+backend/articles/migrations/__pycache__/0002_rename_post_article.cpython-313.pyc
+backend/articles/migrations/__pycache__/0003_alter_article_table.cpython-313.pyc
+backend/articles/migrations/__pycache__/0004_alter_article_created_at_alter_article_updated_at.cpython-313.pyc
+backend/articles/migrations/__pycache__/0005_alter_article_created_at_alter_article_updated_at.cpython-313.pyc
+backend/palmblog/__pycache__/settings.cpython-313.pyc
+backend/palmblog/__pycache__/urls.cpython-313.pyc
+backend/users/__pycache__/models.cpython-313.pyc

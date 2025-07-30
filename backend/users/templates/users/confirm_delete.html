@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="sectionProfil">
+    <h2>Supprimer mon profil</h2>
+  </section>
+  
+  <section class="sectionProfil">
+    <p>Es-tu sûr de vouloir supprimer ton compte ? <br>
+      <strong>Cette action est irréversible.</strong>
+    </p>
+    </section>
+
+    <section class="sectionProfil">
+    <form method="post">
+      {% csrf_token %}
+      <div class="buttonGroup">
+        <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Oui, supprimer mon compte</button>
+        <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

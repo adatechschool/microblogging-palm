@@ -1,27 +1,23 @@
-"""
-URL configuration for palmblog project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from palmblog.views import home
+from users.views.login_page import login_page, logout_user
+from users.views.signup_page import signup_page
+from users.views import profile_page, edit_profile, delete_profile, public_profile
+from articles.views import article_detail_html, accueil_html
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home, name='home'),
-    path('articles/', include('articles.urls')),  # inclut les routes de l'app articles
-    path('users/', include('users.urls')), #peut-être à changer par profils/ ??
-]
+    path('', login_page, name='login'),
+    path('inscription/', signup_page, name='signup'),
+    path('accueil/', home, name='home'),
+    path('', include('articles.urls')),  # inclut les routes de l'app articles
+    path('users/', include('users.urls')), #peut-être à supprimer ?
+    path('monprofil/', profile_page.profile_view, name='profile'),
+    path('monprofil/modifier/', edit_profile.edit_profile_view, name='edit_profile'),
+    path('monprofil/supprimer/', delete_profile.delete_profile_view, name='delete_profile'),
+    path('profil/<int:user_id>/', public_profile.public_profile_view, name='public_profile'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

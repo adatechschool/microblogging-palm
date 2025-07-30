@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="sectionProfil">
+    <h2>Modifier mon article</h2>
+  </section> 
+  
+  {% if error %}
+    <p style="color: red">{{ error }}</p>
+  {% endif %}  
+  <form method="post" class="formContainer">
+    {% csrf_token %}
+    
+    <div class="formContenu">
+        <label for="title">Titre :</label>
+        <input type="text" id="title" name="title" value="{{ article.title}}" required />
+    </div>
+
+    <div class="formContenu">
+        <label for="content">Contenu :</label>
+        <textarea id="content" name="content" rows="5" cols="40" required>{{ article.content}}</textarea>
+    </div>
+    <div class="buttonGroup">
+      <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Enregistrer les modifications</button>
+      <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+    </div>
+  </form>
+{% endblock %}
