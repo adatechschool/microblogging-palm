@@ -4,14 +4,17 @@
   {% for article in articles %}
   <section class="article">
     <div class="info">
-      <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="{% url 'public_profile' article.user.id %}">{{ article.user.username }} </a></p>
+      <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="{% url 'public_profile' article.user.id %}" class="linkButton">{{ article.user.username }} </a></p>
+      <!-- <p>{{ article.created_at|date:"d/m/Y" }} - par <a href="{% url 'public_profile' article.user.id %}" style="color: var(color-accent);">{{ article.user.username }} </a></p> -->
     </div>
     <div class="titreArticle">
       <h2>{{ article.title }}</h2>
       <p>{{ article.content|truncatewords:20 }}</p>
     </div>
-    <p>{{ article.liked_by.count }} j’aime</p>
-    <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
+    <div class="footerArticle">
+      <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite ...</a>
+      <p class="likes">{{ article.liked_by.count }} j’aime</p>
+    </div>
   </section>
   {% endfor %}
 {% endblock %}
