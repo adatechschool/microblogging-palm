@@ -5,9 +5,10 @@
     <h2>Modifier mon profil</h2>
   </section>
 
-  <form method="post" enctype="multipart/form-data" class="formProfile">
+  <form method="post" enctype="multipart/form-data" class="formContainer">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="plainButtonMax">Enregistrer les modifications</button>
+    <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Enregistrer les modifications</button>
+    <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
   </form>
 {% endblock %}

@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Supprimer mon article</h2>
-  <p>Es-tu sûr de vouloir supprimer cet article ? Cette action est irréversible.</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Oui, supprimer mon article</button>
-    <a href="{% url 'profile' %}">Annuler</a>
-  </form>
+  <section class="sectionProfil">
+    <h2>Supprimer mon article</h2>
+  </section>
+
+  <section class="sectionProfil">
+  <p>Es-tu sûr de vouloir supprimer cet article ? <br>
+    <strong>Cette action est irréversible.</strong>
+  </p>
+  </section>
+
+  <section class="sectionProfil">
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="plainButtonBase" style="--btn-width: 300px;">Oui, supprimer mon article</button>
+      <a href="{% url 'profile' %}" class="outlineButtonBase">Annuler</a>
+    </form>
+  </section>
 {% endblock %}
