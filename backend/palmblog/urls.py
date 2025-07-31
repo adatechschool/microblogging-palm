@@ -4,10 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from palmblog.views import home
-from users.views.login_page import login_page, logout_user
+from users.views.login_page import login_page
 from users.views.signup_page import signup_page
 from users.views import profile_page, edit_profile, delete_profile, public_profile
-from articles.views import article_detail_html, accueil_html
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +15,7 @@ urlpatterns = [
     path('inscription/', signup_page, name='signup'),
     path('accueil/', home, name='home'),
     path('', include('articles.urls')),  # inclut les routes de l'app articles
-    path('users/', include('users.urls')), #peut-être à supprimer ?
+    path('users/', include('users.urls')),
     path('monprofil/', profile_page.profile_view, name='profile'),
     path('monprofil/modifier/', edit_profile.edit_profile_view, name='edit_profile'),
     path('monprofil/supprimer/', delete_profile.delete_profile_view, name='delete_profile'),

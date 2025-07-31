@@ -10,10 +10,9 @@ from django.core.paginator import Paginator
 @api_view(['GET'])
 def accueil(request):
     articles = Article.objects.all()
-    #if request.headers.get('Accept') == 'application/json':
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
-    #return render(request, 'accueil.html', {'articles': articles})
+    
 
 @api_view(['GET'])
 def article_id(request, id):
@@ -22,7 +21,7 @@ def article_id(request, id):
     return Response(serializer.data)
 
 def accueil_html(request):
-    articles=Article.objects.all() #.order_by('-created_at') #pour trier les articles du plus récent au plus vieux grace au '-' devant la valeur
+    articles=Article.objects.all()
     paginator = Paginator(articles, 5) # 5 articles par page
 
     page_number = request.GET.get('page') #pour récuper le numéro de la page dans l'URL

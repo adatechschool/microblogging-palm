@@ -8,6 +8,6 @@ def delete_profile_view(request):
         user = request.user
         logout(request)
         user.delete()
-        return redirect('home')  # redirige vers une page publique
+        return redirect('home') 
 
     return render(request, 'users/confirm_delete.html')

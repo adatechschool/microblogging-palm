@@ -16,14 +16,14 @@ from django.utils import timezone
 User.objects.all().delete()
 Article.objects.all().delete()
 
-# 📸 Image factice par défaut
+# Image factice par défaut
 dummy_image_path = Path(__file__).parent / "default.jpg"
 if not dummy_image_path.exists():
     # Crée une image vide si elle n'existe pas encore
     with open(dummy_image_path, "wb") as f:
         f.write(b"\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xFF\xFF\xFF\x21\xF9\x04\x01\x00\x00\x00\x00\x2C\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02\x4C\x01\x00\x3B")
 
-# 🔐 Utilisateurs à créer
+# Utilisateurs à créer
 users_data = [
     {"username": "alice", "email": "alice@example.com", "password": "S3cret!s"},
     {"username": "bob", "email": "bob@example.com", "password": "S3cret!s"},
@@ -44,7 +44,7 @@ for data in users_data:
 
 print("✅ Utilisateurs créés avec photo de profil.")
 
-# 📝 Titres et contenus d'articles
+# Titres et contenus d'articles
 titles = [
     "Introduction à Django",
     "Comment fonctionne le modèle MVC",
@@ -66,4 +66,4 @@ for user in users:
             created_at=timezone.now()
         )
 
-print("✅ Articles créés pour chaque utilisateur.")
+print("Articles créés pour chaque utilisateur.")

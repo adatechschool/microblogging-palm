@@ -9,7 +9,7 @@ def choose_avatar(request):
         form = AvatarChoiceForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('profile')  # ou la page de ton choix
+            return redirect('profile')  
     else:
         form = AvatarChoiceForm(instance=user)
     

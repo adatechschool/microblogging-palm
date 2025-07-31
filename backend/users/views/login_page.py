@@ -1,5 +1,5 @@
 from .. import forms
-from django.contrib.auth import login, authenticate, logout  #· import des fonctions login et authenticate
+from django.contrib.auth import login, authenticate, logout 
 from django.shortcuts import render, redirect
 
 def login_page(request):
