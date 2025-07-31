@@ -18,7 +18,7 @@
         <form method="POST" action="{% url 'like' article.id %}">
           {% csrf_token %}
           {% if user in article.liked_by.all %}
-            <button type="submit">
+            <button type="submit" style="border: none">
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="20.000000pt" height="20.000000pt" viewBox="0 0 1000.000000 800.000000"
  preserveAspectRatio="xMidYMid meet">
@@ -60,7 +60,7 @@ fill="#000000" stroke="none">
 </g>
 </svg></button>
           {% else %}
-            <button type="submit">
+            <button type="submit" style="border: none">
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="20.000000pt" height="20.000000pt" viewBox="0 0 1000.000000 800.000000"
  preserveAspectRatio="xMidYMid meet">
