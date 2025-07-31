@@ -9,15 +9,15 @@
       <h1>{{ profile_user.username }}</h1>
       <br>
       <p><strong>Prénom</strong> {{ profile_user.first_name }}</p>
-      {% endif %}
+     
       {% if profile_user.first_name %}
       <p><strong>Nom</strong> {{ profile_user.last_name }}</p>
       {% endif %}
     </div>
 
     <div class="profilPhoto">
-      {% if profile_user.profile_photo %}
-        <img class="profilePicture" src="{{ profile_user.profile_photo.url }}" alt="Photo de profil de {{ profile_user.username }}" width="150" height="150">
+       {% if user.avatar_choice %}
+        <img class="profilePicture" src="{% static 'images/avatars/'|add:user.avatar_choice %}" alt="Avatar de {{ user.username }}" width="150" height="150">
       {% else %}
         <img class="profilePicture" src="{% static 'images/default_profile.png' %}" alt="Photo par défaut" width="150" height="150">
       {% endif %}
