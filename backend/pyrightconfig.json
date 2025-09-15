@@ -1,0 +1,12 @@
+{
+  "typeCheckingMode": "basic",
+  "reportMissingTypeStubs": false,
+  "plugins": [
+    {
+      "module": "mypy_django_plugin.main"
+    }
+  ],
+  "django": {
+    "settings_module": "backend.palmblog.settings.py"
+  }
+}

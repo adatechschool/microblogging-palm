@@ -99,4 +99,27 @@
       <p>Tu n’as pas encore publié d’article.</p>
     {% endif %}
   </section>
+
+  <section class="sectionProfil">
+    <h2>Articles que j'ai likés</h2>
+    {% if liked_articles %}
+      <ul class="listArticles">
+        {% for article in liked_articles %}
+          <li class="article">
+            <p class="info">{{ article.created_at|date:"d/m/Y - H:i" }}</p>
+            <div class="titreArticle">
+              <h3>{{ article.title}}</h3>
+              <p>{{ article.content|truncatewords:20}}</p>
+            </div>
+            <div class="footerArticle">
+              <a href="{% url 'article_detail_html' article.id %}" class="linkButton">Lire la suite...</a>
+              <p class="likes">{{ article.liked_by.count}} j'aime</p>
+            </div>
+          </li>
+          {% endfor %}
+      </ul>
+    {% else %}
+      <p>Tu n'as encore liké aucun article.</p>
+    {% endif %}
+  </section>
 {% endblock %}
