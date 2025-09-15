@@ -38,7 +38,7 @@ def article_new(request):
         article.save()
 
         return Response(
-            {'message': 'Article créé avec succès', 'id': article.id},
+            {'message': 'Article créé avec succès', 'id': article.id},# type: ignore[attr-defined]
             status=status.HTTP_201_CREATED
         )
 
