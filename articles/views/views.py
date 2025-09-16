@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Article
-from .serializers import ArticleSerializer
+from articles.models import Article
+from articles.serializers import ArticleSerializer
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 
@@ -27,7 +27,7 @@ def accueil_html(request):
     page_number = request.GET.get('page') #pour récuper le numéro de la page dans l'URL
     page_obj = paginator.get_page(page_number)
 
-    article_ids=[article.id for article in articles]
+    article_ids=[article.id for article in articles] # type: ignore
     request.session["articles_affiches"]=article_ids
 
     return render(request, 'accueil.html', {'page_obj': page_obj})

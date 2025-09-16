@@ -1,5 +1,5 @@
 """
-WSGI config for palmblog project.
+Fichier de configuration pour la production.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
