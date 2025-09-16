@@ -1,4 +1,4 @@
-from .models import Article
+from articles.models import Article
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 import json

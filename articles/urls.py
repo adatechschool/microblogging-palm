@@ -1,9 +1,11 @@
 from django.urls import path
-from .views import article_detail_html, accueil_html
-from .postViews import article_new_html, delete_post, edit_post
-from .likeViews import like
 from django.conf import settings
 from django.conf.urls.static import static
+
+from articles.views.views import article_detail_html, accueil_html
+from articles.views.postViews import article_new_html, delete_post, edit_post
+from articles.views.likeViews import like
+
 
 urlpatterns = [
     path('accueil', accueil_html, name='accueil'),

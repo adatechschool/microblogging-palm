@@ -1,13 +1,74 @@
+# Django #
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.cpython-313.pyc
+__pycache__
 
-backend/articles/__pycache__/models.cpython-313.pyc
-backend/articles/__pycache__/postViews.cpython-313.pyc
-backend/articles/__pycache__/urls.cpython-313.pyc
-backend/articles/__pycache__/views.cpython-313.pyc
-backend/articles/migrations/__pycache__/0001_initial.cpython-313.pyc
-backend/articles/migrations/__pycache__/0002_rename_post_article.cpython-313.pyc
-backend/articles/migrations/__pycache__/0003_alter_article_table.cpython-313.pyc
-backend/articles/migrations/__pycache__/0004_alter_article_created_at_alter_article_updated_at.cpython-313.pyc
-backend/articles/migrations/__pycache__/0005_alter_article_created_at_alter_article_updated_at.cpython-313.pyc
-backend/palmblog/__pycache__/settings.cpython-313.pyc
-backend/palmblog/__pycache__/urls.cpython-313.pyc
-backend/users/__pycache__/models.cpython-313.pyc
+media
+
+# Backup files # 
+*.bak 
+
+# Python # 
+*.py[cod] 
+*$py.class 
+
+# Installer logs 
+pip-log.txt 
+pip-delete-this-directory.txt 
+
+# Unit test / coverage reports 
+htmlcov/ 
+.tox/ 
+.coverage 
+.coverage.* 
+.cache 
+.pytest_cache/ 
+nosetests.xml 
+coverage.xml 
+*.cover 
+.hypothesis/ 
+
+# pyenv 
+.python-version 
+
+# Environments 
+.env 
+.venv 
+env/ 
+venv/ 
+ENV/ 
+env.bak/ 
+venv.bak/ 
+
+# mkdocs documentation 
+/site 
+
+# mypy 
+.mypy_cache/ 
+
+# sftp configuration file 
+sftp-config.json 
+
+# Visual Studio Code # 
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history
+
+articles/__pycache__/models.cpython-313.pyc
+articles/__pycache__/postViews.cpython-313.pyc
+articles/__pycache__/urls.cpython-313.pyc
+articles/__pycache__/views.cpython-313.pyc
+articles/migrations/__pycache__/0001_initial.cpython-313.pyc
+articles/migrations/__pycache__/0002_rename_post_article.cpython-313.pyc
+articles/migrations/__pycache__/0003_alter_article_table.cpython-313.pyc
+articles/migrations/__pycache__/0004_alter_article_created_at_alter_article_updated_at.cpython-313.pyc
+articles/migrations/__pycache__/0005_alter_article_created_at_alter_article_updated_at.cpython-313.pyc
+palmblog/__pycache__/settings.cpython-313.pyc
+palmblog/__pycache__/urls.cpython-313.pyc
+users/__pycache__/models.cpython-313.pyc
